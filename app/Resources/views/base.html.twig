@@ -29,6 +29,13 @@
                                 <li><a href="{{ path('BloggerBlogBundle_homepage') }}">Home</a></li>
                                 <li><a href="{{ path('BloggerBlogBundle_about') }}">About</a></li>
                                 <li><a href="{{ path('BloggerBlogBundle_contact') }}">Contact</a></li>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <li><a href="{{ path('fos_user_profile_show') }}">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a></li>
+                                <li><a href="{{ path('fos_user_security_logout') }}">{{'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+                    {% else %}
+                                <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
+                                <li><a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></li>
+                    {% endif %}
                             </ul>
                         </nav>
                     {% endblock %}
@@ -41,7 +48,7 @@
             </header>
 
             <section class="main-col">
-                {% block body %}{% endblock %}
+                {% block body %}{{ block ('fos_user_content') }}{% endblock %}
             </section>
             <aside class="sidebar">
                 {% block sidebar %}{% endblock %}

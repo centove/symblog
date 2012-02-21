@@ -1,11 +1,12 @@
 imports:
     - { resource: parameters.ini }
+    - { resource: fos_user.yml }
     - { resource: security.yml }
     - { resource: @BloggerBlogBundle/Resources/config/config.yml }
 
 framework:
     #esi:             ~
-    #translator:      { fallback: en }
+    translator:      { fallback: en }
     secret:          %secret%
     charset:         UTF-8
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }

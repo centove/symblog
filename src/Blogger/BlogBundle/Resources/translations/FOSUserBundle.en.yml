@@ -1,0 +1,6 @@
+profile:
+    show:
+        name:   Display Name
+        
+fos_user_registration_form_name: "Display name:"
+

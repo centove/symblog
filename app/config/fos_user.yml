@@ -2,4 +2,10 @@ fos_user:
     db_driver: orm 
     firewall_name: main
     user_class: Blogger\BlogBundle\Entity\User
-
+    registration:
+        form:
+            type: blogger_user_registration
+    profile:
+        form:
+            type: blogger_user_profile
+            

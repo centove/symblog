@@ -3,3 +3,14 @@ services:
         class: Blogger\BlogBundle\Twig\Extensions\BloggerBlogExtension
         tags:
             - { name: twig.extension }
+    blogger_user.registration.form.type:
+        class:  Blogger\BlogBundle\Form\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: blogger_user_registration }
+    blogger_user.profile.form.type:
+        class:  Blogger\BlogBundle\Form\ProfileFormType
+        argument:   [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: blogger_user_profile } 
+

@@ -8,7 +8,6 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="Blogger\BlogBundle\Repository\UserRepository")
  * @ORM\Table(name="blog_user")
- * @ORM\HasLifecycleCallbacks()
  */
 class User extends BaseUser
 {
@@ -19,6 +18,17 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * The author's name as will be displayed next to the posts/comments.
+     * @ORM\Column(type="string", length="100")
+     */
+    protected $name;
+    
+    public function __toString()
+    {
+        return $this->name;
+    }
+    
     public function __construct()
     {
         parent::__construct();
@@ -33,5 +43,25 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }

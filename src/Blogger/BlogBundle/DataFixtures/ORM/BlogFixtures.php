@@ -60,6 +60,20 @@ class BlogFixtures extends AbstractFixture implements OrderedFixtureInterface
         $blog5->setUpdated($blog5->getCreated());
         $manager->persist($blog5);
 
+        $blog6 = new Blog();
+        $blog6->setTitle('You\'re either a one or a zero. Alive or dead');
+        $blog6->setBlog('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tempor sodales neque, quis pharetra lectus viverra eget. Sed sit amet enim ac arcu cursus tempus. Donec vitae purus urna. Maecenas at magna congue dolor elementum mollis. Aliquam diam leo, luctus a viverra vel, gravida vitae purus. Duis vitae dictum justo. Phasellus venenatis odio ut orci scelerisque bibendum. Integer velit magna, sodales a tristique sit amet, mollis ac lectus. Nullam non ligula volutpat ligula laoreet rhoncus et eleifend eros. Sed felis mi, lobortis a feugiat eu, congue ac libero. Praesent id est tellus, non feugiat erat.
+
+Integer et quam ac nunc dignissim eleifend id ac elit. Donec id sapien quam. Suspendisse purus metus, viverra eu adipiscing non, convallis ac velit. Pellentesque facilisis gravida velit sit amet condimentum. Cras nulla orci, ornare ac cursus egestas, accumsan ut neque. Suspendisse imperdiet leo in lectus ultricies id ultrices dolor commodo. Morbi et augue at nunc ultrices fringilla. Ut non nunc velit. Fusce vitae ipsum id libero rhoncus vehicula ullamcorper vel mauris. Proin mauris ipsum, blandit sed ullamcorper ut, facilisis a risus. Suspendisse placerat, nibh vel commodo mollis, nulla orci tristique risus, vel auctor elit lorem sit amet dolor. Nunc sit amet sem eget tellus vestibulum tempor ac id nulla. Donec dignissim suscipit dui in bibendum.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elittibulum vulputate mauris eget erat congue dapibus imperdiet justo scelerisque.');
+        $blog6->setImage('one_or_zero.jpg');
+        $blog6->setAuthor($this->getReference('admin-user'));
+        $blog6->setTags('binary, one, zero, alive, dead, !trusting, movie, symblog');
+        $blog6->setCreated(new \DateTime("2011-03-25 15:30:18"));
+        $blog6->setUpdated($blog6->getCreated());
+        $manager->persist($blog6);
+        
         $manager->flush();
         
         $this->addReference('blog-1', $blog1);
@@ -67,6 +81,7 @@ class BlogFixtures extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('blog-3', $blog3);
         $this->addReference('blog-4', $blog4);
         $this->addReference('blog-5', $blog5);
+        $this->addReference('blog-6', $blog6);
     }
     
     public function getOrder()

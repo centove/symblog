@@ -69,8 +69,6 @@ class Blog
     {
         $this->comments = new ArrayCollection();
         
-        $this->setCreated(new \DateTime());
-        $this->setUpdated(new \DateTime());
     }
 
     /**
@@ -78,8 +76,12 @@ class Blog
      */
     public function setCreatedValue()
     {
-        $this->setCreated(new \DateTime());
-        $this->setUpdated(new \DateTime());
+        if (!$this->created) {
+            $this->setCreated(new \DateTime());
+        }
+        if (!$this->updated) {
+            $this->setUpdated(new \DateTime());
+        }
     }
 
     /**

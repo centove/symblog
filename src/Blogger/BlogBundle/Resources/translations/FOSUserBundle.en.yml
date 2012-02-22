@@ -1,6 +1,15 @@
 profile:
     show:
         name:   Display Name
+    link:
+        edit:   Edit my profile
+        change_password: Change my password
+        
+fos_user_profile_form_user_name: "Display Name:"
         
 fos_user_registration_form_name: "Display name:"
+
+security:
+    login:
+        reset_password: Reset Password
 

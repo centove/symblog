@@ -2,4 +2,8 @@
     <p>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}: {{ user.username }}</p>
     <p>{{ 'profile.show.name'|trans({}, 'FOSUserBundle') }}: {{ user.name }}</p>
     <p>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}: {{ user.email }}</p>
+    <ul>
+        <li><a href="{{ path('fos_user_profile_edit') }}">{{ 'profile.link.edit'|trans({}, 'FOSUserBundle') }}</a></li>
+        <li><a href="{{ path('fos_user_change_password') }}">{{ 'profile.link.change_password'|trans({}, 'FOSUserBundle') }}</a></li>
+   </ul>
 </div>

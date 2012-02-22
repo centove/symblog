@@ -9,6 +9,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template
 ;
+
+use JMS\SecurityExtraBundle\Annotation\Secure
+;
+
 use Blogger\BlogBundle\Entity\Blog,
     Blogger\BlogBundle\Form\BlogType
 ;
@@ -22,6 +26,7 @@ class BlogController extends Controller
      * Edit a blog entry
      * @Route("/{id}/{slug}/edit", requirements={"id" = "\d+"}, name="BloggerBlogBundle_blog_edit")
      * @Method("get")
+     * @Secure(roles="ROLE_BLOGGER")
      */
     public function editAction($id, $slug)
     {
@@ -41,6 +46,7 @@ class BlogController extends Controller
      * New blog entry -- Display a form for a new blog entry.
      * @Route("/new", name="BloggerBlogBundle_blog_new")
      * @Method("get")
+     * @Secure(roles="ROLE_BLOGGER")
      */
      public function newAction()
      {
@@ -56,6 +62,7 @@ class BlogController extends Controller
       * Create a new blog entry.
       * @Route("/create", name="BloggerBlogBundle_blog_create")
       * @Method("post")
+      * @Secure(roles="ROLE_BLOGGER")
       */
     public function createAction()
     {
@@ -84,6 +91,7 @@ class BlogController extends Controller
      * Update and existing blog.
      * @Route("/{id}/{slug}/update", requirements={"id" = "\d+"}, name="BloggerBlogBundle_blog_update")
      * @Method("post")
+     * @Secure(roles="ROLE_BLOGGER")
      */
     public function updateAction($id, $slug)
     {

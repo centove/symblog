@@ -10,7 +10,7 @@ services:
             - { name: form.type, alias: blogger_user_registration }
     blogger_user.profile.form.type:
         class:  Blogger\BlogBundle\Form\ProfileFormType
-        argument:   [%fos_user.model.user.class%]
+        arguments:   [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: blogger_user_profile } 
 

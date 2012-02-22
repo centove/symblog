@@ -3,14 +3,22 @@
 namespace Blogger\BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Blogger\BlogBundle\Entity\Comment;
-use Blogger\BlogBundle\Form\CommentType;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
+    Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
+    Sensio\Bundle\FrameworkExtraBundle\Configuration\Template
+;
+
+use Blogger\BlogBundle\Entity\Comment,
+    Blogger\BlogBundle\Form\CommentType
+;
 
 /**
  * Comment controller.
  */
 class CommentController extends Controller
 {
+
     public function newAction($blog_id)
     {
         $blog = $this->getBlog($blog_id);
@@ -24,7 +32,11 @@ class CommentController extends Controller
             'form'   => $form->createView()
         ));
     }
-
+    
+    /**
+     * @Route("/comment/{blog_id}", requirements={"id" = "\d+"}, name="BloggerBlogBundle_comment_create")
+     * @Method("post")
+     */
     public function createAction($blog_id)
     {
         $blog = $this->getBlog($blog_id);

@@ -30,7 +30,7 @@ class Blog
     protected $slug;
     
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\ManyToOne(targetEntity="Blogger\BlogBundle\Entity\User")
      */
     protected $author;
     
@@ -158,9 +158,9 @@ class Blog
     /**
      * Set author
      *
-     * @param string $author
+     * @param Blogger\BlogBundle\Entity\User $author
      */
-    public function setAuthor($author)
+    public function setAuthor(User $author)
     {
         $this->author = $author;
     }
@@ -168,7 +168,7 @@ class Blog
     /**
      * Get author
      *
-     * @return string 
+     * @return Blogger\BlogBundle\Entity\User
      */
     public function getAuthor()
     {

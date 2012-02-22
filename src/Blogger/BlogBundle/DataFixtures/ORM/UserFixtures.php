@@ -30,8 +30,50 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $userManager->updateUser($user);
         
         $manager->persist($user);
+        
+        $zero = $userManager->createUser();
+        $zero->setUsername('blogger');
+        $zero->setName('Zero Cool');
+        $zero->setEmail('zero@example.com');
+        $zero->setPlainPassword('FireFix-');
+        $zero->setEnabled(true);
+        $userManager->updateUser($zero);
+        $manager->persist($zero);
+        
+        $gabriel = $userManager->createUser();
+        $gabriel->setUsername('g-blogger');
+        $gabriel->setName('Gabriel');
+        $gabriel->setEmail('gabriel@example.com');
+        $gabriel->setPlainPassword('Disabled.');
+        $gabriel->setEnabled(false);
+        $userManager->updateUser($gabriel);
+        $manager->persist($gabriel);
+        
+        $kevin = $userManager->createUser();
+        $kevin->setUsername('k-blogger');
+        $kevin->setName('Kevin Flynn');
+        $kevin->setEmail('kevin@example.com');
+        $kevin->setPlainPassword('Disabled.');
+        $kevin->setEnabled(false);
+        $userManager->updateUser($kevin);
+        $manager->persist($kevin);
+        
+        $gary = $userManager->createUser();
+        $gary->setUsername('gw-blogger');
+        $gary->setName('Gary Winston');
+        $gary->setEmail('gary@example.com');
+        $gary->setPlainPassword('Disabled.');
+        $gary->setEnabled(false);
+        $userManager->updateUser($gary);
+        $manager->persist($gary);
+        
         $manager->flush();
         $this->addReference('admin-user', $user);
+        $this->addReference('zero-user', $zero);
+        $this->addReference('gabriel-user', $gabriel);
+        $this->addReference('kevin-user', $kevin);
+        $this->addReference('gary-user', $gary);
+        
     }
     
     public function getOrder()
